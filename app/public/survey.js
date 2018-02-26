@@ -1,28 +1,8 @@
-var config = {
-  ".chosen-select": {},
-  ".chosen-select-deselect": {
-    allow_single_deselect: true
-  },
-  ".chosen-select-no-single": {
-    disable_search_threshold: 10
-  },
-  ".chosen-select-no-results": {
-    no_results_text: "Oops, nothing found!"
-  },
-  ".chosen-select-width": {
-    width: "95%"
-  }
-};
-
-for (var selector in config) {
-  $(selector).chosen(config[selector]);
-}
-
 $("#submit").on("click", function(event) {
   event.preventDefault();
 
   function validateForm() {
-    var isValid = true;
+    let isValid = true;
     $(".form-control").each(function() {
       if ($(this).val() === "") {
         isValid = false;
@@ -51,12 +31,11 @@ $("#submit").on("click", function(event) {
       $("#q9").val(),
       $("#q10").val()
     ];
-    var userData = {
+    let userData = {
       name: $("#name").val(),
       photo: $("#photo").val(),
       scores: scores
     };
-    console.log(userData);
     $.post("/api/friends", userData, function(data) {
 
       $("#match-name").text(data.name);

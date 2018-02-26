@@ -1,17 +1,20 @@
 const express = require('express');
 const path = require('path');
 let friends = require('../data/friends');
+const bodyParser = require('body-parser');
 
 let router = express.Router();
 
+router.use(bodyParser.json());
+
 router.get('/', (req, res) => {
-  res.json(friends);
+  res.json(friends.data);
 })
 
 router.post('/', (req, res) => {
   let closestFriend;
   let closestFriendCount = 0;
-
+  console.log(req.body);
   const bodyArray = req.body['scores[]'];
 
   friends.data.forEach(element => {
@@ -26,7 +29,7 @@ router.post('/', (req, res) => {
   })
   
   friends.pushData(req.body);
-  console.log(friends);
+  res.send(closestFriend);
 })
 
 module.exports = router;

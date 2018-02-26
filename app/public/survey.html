@@ -4,16 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>FriendFinder</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +29,7 @@
 
     <h3><strong>Question 1</strong></h3>
     <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-    <select class="chosen-select" id="q1">
+    <select id="q1">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -45,7 +40,7 @@
 
     <h3><strong>Question 2</strong></h3>
     <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
-    <select class="chosen-select" id="q2">
+    <select id="q2">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -160,7 +155,7 @@
       </div>
     </footer>
   </div>
-  
+
   <div id="results-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -179,8 +174,6 @@
 
     </div>
   </div>
-
   <script src="./survey.js" type="text/javascript"></script>
 </body>
-
 </html>
