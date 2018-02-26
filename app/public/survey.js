@@ -36,13 +36,16 @@ $("#submit").on("click", function(event) {
       photo: $("#photo").val(),
       scores: scores
     };
-    $.post("/api/friends", userData, function(data) {
 
-      $("#match-name").text(data.name);
-      $("#match-img").attr("src", data.photo);
-
+    axios.post('/api/friends', userData)
+    .then((response) => {
+      $("#match-name").text(response.data.name);
+      $("#match-img").attr("src", response.data.photo);
+      console.log(response.data);
       $("#results-modal").modal("toggle");
-
+    })
+    .catch((error) => {
+      console.log(error);
     });
   } else {
     alert("Please fill out all fields before submitting!");
