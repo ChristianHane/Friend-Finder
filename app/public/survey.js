@@ -37,16 +37,12 @@ $("#submit").on("click", function(event) {
       scores: scores
     };
 
-    axios.post('/api/friends', userData)
-    .then((response) => {
-      $("#match-name").text(response.data.name);
-      $("#match-img").attr("src", response.data.photo);
-      console.log(response.data);
+    $.post('/api/friends', userData)
+    .then(response => {
+      $("#match-name").text(response.name);
+      $("#match-img").attr("src", response.photo);
       $("#results-modal").modal("toggle");
     })
-    .catch((error) => {
-      console.log(error);
-    });
   } else {
     alert("Please fill out all fields before submitting!");
   }

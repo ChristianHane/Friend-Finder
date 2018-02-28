@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   let closestFriend;
   let closestFriendCount = 0;
-
+  
   friends.data.forEach(element => {
     count = 0;
     for (let i = 0; i < 10; i++) {   
@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
       closestFriend = element;
     } 
   })
-  
+
   friends.pushData(req.body);
   res.send(closestFriend);
 })

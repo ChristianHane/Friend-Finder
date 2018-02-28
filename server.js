@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 app.set('json spaces', 2);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './app/public')));
 
 app.use('/api/friends', apiRoute);
