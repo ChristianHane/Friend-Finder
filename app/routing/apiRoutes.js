@@ -5,7 +5,7 @@ let friends= require('../data/friends');
 let router = express.Router();
 
 router.get('/', (req, res) => {
-  res.json(friends.data);
+  res.json(friends);
 })
 
 router.post('/', (req, res) => {
