@@ -1,30 +1,44 @@
 const express = require('express');
 const path = require('path');
-let friends= require('../data/friends');
+let friends = require('../data/friends');
 
-let router = express.Router();
+const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json(friends);
 })
 
 router.post('/', (req, res) => {
-  let closestFriend;
-  let closestFriendCount = 0;
-
-  friends.forEach(element => {
-    count = 0;
-    for (let i = 0; i < 10; i++) {   
-      count += Math.abs(element.scores[i] - req.body.scores[i]);
+  const closestFriend = friends.map(friend=> (
+    {
+      name: friend.name,
+      photo: friend.photo,
+      diff: req.body.scores.map((score, index) => Math.abs(Number(friend.scores[index]) - Number(score))).reduce((acc, curr) => acc + curr),
     }
-    if (count < closestFriendCount || closestFriend === undefined) {
-      closestFriendCount = count;
-      closestFriend = element;
-    } 
-  })
-
+  )).sort((base, other) => base.diff - other.diff)[0];
   friends.push(req.body);
   res.send(closestFriend);
 })
+
+
+
+
+// let closestFriend;
+// let closestFriendCount = 0;
+
+// friends.forEach(element => {
+//   count = 0;
+//   for (let i = 0; i < 10; i++) {   
+//     count += Math.abs(element.scores[i] - req.body.scores[i]);
+//   }
+//   if (count < closestFriendCount || closestFriend === undefined) {
+//     closestFriendCount = count;
+//     closestFriend = element;
+//   } 
+// })
+
+// friends.push(req.body);
+// res.send(closestFriend);
+
 
 module.exports = router;
