@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const closestFriend = friends.map(friend=> (
+  const closestFriend = friends.map(friend => (
     {
       name: friend.name,
       photo: friend.photo,
@@ -19,26 +19,5 @@ router.post('/', (req, res) => {
   friends.push(req.body);
   res.send(closestFriend);
 })
-
-
-
-
-// let closestFriend;
-// let closestFriendCount = 0;
-
-// friends.forEach(element => {
-//   count = 0;
-//   for (let i = 0; i < 10; i++) {   
-//     count += Math.abs(element.scores[i] - req.body.scores[i]);
-//   }
-//   if (count < closestFriendCount || closestFriend === undefined) {
-//     closestFriendCount = count;
-//     closestFriend = element;
-//   } 
-// })
-
-// friends.push(req.body);
-// res.send(closestFriend);
-
 
 module.exports = router;
